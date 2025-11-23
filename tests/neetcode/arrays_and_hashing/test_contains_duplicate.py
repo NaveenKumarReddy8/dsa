@@ -4,6 +4,7 @@ from dsa.neetcode.arrays_and_hashing.contains_duplicate import Solution
 
 solution = Solution()
 
+
 @pytest.mark.parametrize(
     "nums, expected",
     [

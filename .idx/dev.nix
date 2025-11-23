@@ -16,6 +16,7 @@
     extensions = [
       "ms-python.python"
       "ms-python.debugpy"
+      "charliermarsh.ruff"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
