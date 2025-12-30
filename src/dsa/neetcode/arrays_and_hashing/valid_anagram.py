@@ -4,17 +4,30 @@ class Solution:
             return False
 
         # Pythonic
+        # Time Complexity: O(nlogn) Due to the sorting
+        # Space Complexity: O(n)
+        # return sorted(s) == sorted(t)
+
+        # Pythonic method 2:
+        # Time Complexity: O(n)
+        # Space Complexity: O(n)
         # return Counter(s) == Counter(t)
 
-        # Using dictionary counter
-        counts = {}
+        # Generic
+        # Time Complexity: O(n)
+        # Space Complexity: O(n)
+        counter = {}
         for char in s:
-            counts[char] = counts.get(char, 0) + 1
+            if char in counter:
+                counter[char] += 1
+            else:
+                counter[char] = 1
 
         for char in t:
-            if char not in counts:
+            if char not in counter:
                 return False
-            counts[char] -= 1
-            if counts[char] < 0:
-                return False
+            else:
+                counter[char] -= 1
+                if counter[char] < 0:
+                    return False
         return True
