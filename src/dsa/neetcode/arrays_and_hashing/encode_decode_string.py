@@ -1,26 +1,17 @@
-# Time Complexity: O(n)
-# Space Complexity: O(n)
 class Solution:
     def encode(self, strs: list[str]) -> str:
-        return "".join(f"{len(s)}#{s}" for s in strs)
+        return "".join([f"{len(s)}#{s}" for s in strs])
 
     def decode(self, s: str) -> list[str]:
+        start = 0
+        end = 0
+        length_of_s = len(s)
         result = []
-        i = 0
-        while i < len(s):
-            j = i
-            while j < len(s) and s[j] != "#":
-                j += 1
-            length = int(s[i:j])
-            result.append(s[j + 1 : j + 1 + length])
-            i = j + 1 + length
-        return result
+        length_of_word = 0
+        while start < length_of_s and end < length_of_s:
+            if s[end] == "#":
+                length_of_word = int(s[start:end])
+                start = end + 1
 
 
-solution = Solution()
-
-encoded_str = solution.encode(["lint", "code", "love", "you"])
-print(encoded_str)
-
-decoded_str = solution.decode(encoded_str)
-print(decoded_str)
+print(Solution().encode(["leet", "code", "abcdefedfsadfsdsddsfsd"]))
