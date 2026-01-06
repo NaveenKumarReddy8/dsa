@@ -5,13 +5,14 @@ class Solution:
     def decode(self, s: str) -> list[str]:
         start = 0
         end = 0
-        length_of_s = len(s)
         result = []
-        length_of_word = 0
-        while start < length_of_s and end < length_of_s:
+        length = len(s)
+        while end < length:
             if s[end] == "#":
                 length_of_word = int(s[start:end])
-                start = end + 1
-
-
-print(Solution().encode(["leet", "code", "abcdefedfsadfsdsddsfsd"]))
+                result.append(s[end + 1 : end + 1 + length_of_word])
+                end += length_of_word + 1
+                start = end
+            else:
+                end += 1
+        return result
